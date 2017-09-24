@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mageddo</groupId>
+	<artifactId>swing-utils</artifactId>
+	<version>0.0.1</version>
+	<name>swing-utils</name>
+	<description>		</description>
+	<properties>
+		<jdk.version>1.6</jdk.version>
+		<maven.compiler.version>2.1</maven.compiler.version>
+	</properties>
+	<build>
+		<plugins>
+			<!-- configura a versão da JDK -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- gera os códigos fonte do projeto -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.mageddo</groupId>
+			<artifactId>utils</artifactId>
+			<version>0.1.4</version>
+		</dependency>
+	</dependencies>
+</project>
