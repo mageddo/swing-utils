@@ -134,11 +134,11 @@ public class SwingUtil {
 	 * @param component componente a ser salvo (Caso seja o componente grande colocar o interno e não o scrollpane)
 	 */
 	public static void saveImage(Component component) throws IOException {
-		saveImage(null, componentToImage(component), null);
+		saveImage(null, component);
 	}
 
 	public static void saveImage(Component parent, Component component) throws IOException {
-		saveImage(parent, componentToImage(component), null);
+		saveImage(parent, component, null);
 	}
 
 	/**
@@ -146,34 +146,42 @@ public class SwingUtil {
 	 * @param component componente a ser convertido em imagem e salvo (Caso seja o componente grande colocar o interno e não o scrollpane)
 	 */
 	public static void saveImage(Component parent, Component component, File target) throws IOException {
-		saveImage(parent, componentToImage(component), target);
+		saveImage(parent, componentToImage(component), target, null);
 	}
 
 	/**
 	 * @param parent pai para eventual exibição de modal
 	 * @param image  imagem a ser salva
 	 */
-	public static void saveImage(Component parent, BufferedImage image, File target) throws IOException {
+	public static File saveImage(Component parent, BufferedImage image, File target, String name) throws IOException {
 
 		final JFileChooser fileSave = new JFileChooser();
 		final javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("Arquivos de imagem", "jpg");
 		fileSave.setAcceptAllFileFilterUsed(false);
 		fileSave.setFileFilter(filter);
-		if (target == null)
-			target = new File(System.getProperty("user.home") + "/screenshot.png");
+		if (target == null){
+			if(name != null) {
+				target = new File(System.getProperty("user.home") + "/" + name);
+			}else{
+				target = new File(System.getProperty("user.home") + "/screenshot.png");
+			}
+		} else {
+			target = new File(target, name);
+		}
 
 		fileSave.setCurrentDirectory(target);
 		fileSave.setSelectedFile(target);
 
 		if(fileSave.showDialog(parent, "Save") != JFileChooser.APPROVE_OPTION){
-			return ;
+			return target;
 		}
 
 		if (!confirmMsg(fileSave)){
-			return;
+			return target;
 		}
 
 		ImageIO.write(image, "jpg", target);
+		return target;
 
 	}
 
