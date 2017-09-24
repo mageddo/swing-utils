@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mageddo</groupId>
 	<artifactId>swing-utils</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>swing-utils</name>
-	<description>		</description>
+	<description></description>
 	<properties>
 		<jdk.version>1.6</jdk.version>
 		<maven.compiler.version>2.1</maven.compiler.version>
@@ -41,9 +41,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>com.mageddo</groupId>
-			<artifactId>utils</artifactId>
-			<version>0.1.4</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
 		</dependency>
 	</dependencies>
 </project>
